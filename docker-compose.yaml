@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  matchanalysis-database:
+    image: library/postgres:11.5
+    volumes:
+      - /srv/matchanalysis/database/matchanalysis:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: matchanalysis
+      POSTGRES_USER: matchanalysis
+      POSTGRES_PASSWORD: matchanalysis_pw
+    networks:
+      matchanalysis-network:
+  
+  matchanalysis-django:
+    build:
+      context: .
+    command: /matchanalysis/manage.py runserver 0.0.0.0:80
+    volumes:
+      - .:/matchanalysis
+      - ./data:/data
+    ports:
+      - "12001:80"
+    links:
+      - matchanalysis-database
+    env_file:
+      - .env
+    networks:
+      matchanalysis-network:
+
+networks:
+  matchanalysis-network:
