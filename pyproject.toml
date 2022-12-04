@@ -17,6 +17,7 @@ dateparser = "^1.1.4"
 djangorestframework = "^3.14.0"
 django-filter = "^22.1"
 django-cors-headers = "^3.13.0"
+pandas = "^1.5.2"
 
 
 [tool.poetry.group.dev.dependencies]
