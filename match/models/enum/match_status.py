@@ -1,6 +1,7 @@
 class MatchStatus:
 
     CANCELLED = "Annulé"
+    SUSPENDED = "Suspendu"
     DEFERRED = "Reporté"
     PENDING = "En attente"
     FINISHED = "Terminé"
@@ -16,6 +17,7 @@ class MatchStatus:
             (cls.FINISHED, cls.FINISHED),
             (cls.EXTENDED, cls.EXTENDED),
             (cls.SHOOTOUT, cls.SHOOTOUT),
+            (cls.SUSPENDED, cls.SUSPENDED)
         ]
 
     @classmethod
@@ -28,4 +30,4 @@ class MatchStatus:
 
     @classmethod
     def get_unplayed_status(cls):
-        return [cls.CANCELLED, cls.DEFERRED, cls.PENDING]
+        return [cls.CANCELLED, cls.DEFERRED, cls.PENDING, cls.SUSPENDED]

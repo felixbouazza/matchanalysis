@@ -26,14 +26,17 @@ class MatchurlsSpider(scrapy.Spider):
         )
 
         for date in dates_to_crawl:
+            date_url = f"{self.base_url}{date}/"
+            file_name = f"{date}.pickle"
+
             yield scrapy.Request(
-                f"{self.base_url}{date}/",
+                date_url,
                 self.parse,
-                cb_kwargs={"match_date": date},
+                cb_kwargs={"file_name": file_name},
             )
 
-    async def parse(self, response, match_date):
-        file_name = f"{match_date}.pickle"
+    async def parse(self, response, file_name):
+
         championship_divs = response.xpath('//div[@class="panel panel-info"]')
         for championship_div in championship_divs:
 

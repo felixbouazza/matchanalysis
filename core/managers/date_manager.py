@@ -1,5 +1,5 @@
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime
 
 import pandas
 
@@ -37,7 +37,7 @@ class DateManager:
     def generate_date_between_two_dates(cls, start_date, end_date):
         sdate = cls.string_to_date(start_date)
         edate = cls.string_to_date(end_date)
-        date_ranges = pandas.date_range(sdate, edate + timedelta(days=1), freq="d")
+        date_ranges = pandas.date_range(sdate, edate, freq="d")
         return date_ranges.strftime(cls.DEFAULT_TODAY_FORMAT).to_list()
 
     @classmethod

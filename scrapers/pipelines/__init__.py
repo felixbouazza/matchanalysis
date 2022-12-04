@@ -1,3 +1,3 @@
-from .match_url import MatchUrlPipeline
+from .match import MatchPipeline
 
-__all__ = ["MatchUrlPipeline"]
+__all__ = ["MatchPipeline"]
